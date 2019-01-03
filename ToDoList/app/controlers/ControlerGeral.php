@@ -22,8 +22,6 @@ switch ($acao) {
 
 	$tarefasHum = $crud->showTarefas($data);
 
-	$finalizadas = $crud->showFinalizadas();
-
 
 		include "../view/index.php";
 
@@ -41,7 +39,7 @@ switch ($acao) {
 		);
 
 	$crud = new geralCrud();
-	
+	//chama a função addTarefa
 	$tarefa = $crud->addTarefa($obj);	
 		
 		header('Location: ControlerGeral.php');
@@ -49,11 +47,11 @@ switch ($acao) {
 		break;	
 
 	case 'excluiTarefa':
-
+	//pega a id por metodo GET
 	$idTarefa = $_GET['idtarefa'];
 
 	$crud = new geralCrud();
-
+	//chama a função excluiTarefa
 	$excluir = $crud->excluiTarefa($idTarefa);
 
 		header('Location : ControlerGeral.php');
@@ -61,14 +59,18 @@ switch ($acao) {
 		break;
 
 	case 'finalizaTarefa':
-
+		//pega a id por metodo get
 		$idTarefa = $_GET['idtarefa'];
 
 		$crud = new geralCrud();
+
 		//pega o objeto da tarefa que deseja finalizar
-		$tarefaFinalizada = $crud->showTarefa($idtarefa);
+		$tarefaFinalizada = $crud->showTarefa($idTarefa);
+		//print_r($tarefaFinalizada->id);die;
+
 		//adiciona à tabela finalizadas
-		$finalizaTarefa = $crud->finalizaTarefa($TarefaFinalizada);
+		$finalizaTarefa = $crud->finalizaTarefa($tarefaFinalizada);
+
 		//exclui a tarefa já finalizada da tabela "Afazeres"
 		$excluiTarefa = $crud->excluiTarefa($idTarefa);
 

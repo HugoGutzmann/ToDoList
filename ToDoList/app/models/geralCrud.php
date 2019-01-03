@@ -79,6 +79,9 @@ if (isset($listaAfazeres)) {
        $sql1 = "DELETE FROM afazeres where id = '{$tarefa->id}' ";
        $sql2 = "INSERT INTO finalizadas (nome,data,descricao) values('{$tarefa->nome}','{$tarefa->data}','{$tarefa->descricao}')";
 
+       //print_r($sql1);
+       //print_r($sql2);die;
+
         $this->conexao->exec($sql1);
         $this->conexao->exec($sql2);
 
@@ -87,9 +90,26 @@ if (isset($listaAfazeres)) {
 // retorna uma tarefa específica para obter o objeto tarefa referente a ela.
     public function showTarefa($id){
         $sql = "SELECT * from afazeres where id = '{$id}'";
+        //print_r($sql);die;
+        $resultado = $this->conexao->query($sql);
+        $tarefa = $resultado->fetch(PDO::FETCH_ASSOC);
 
-           $resultado = $this->conexao->query($sql);
+            $id        = $tarefa['id'];
+            $nome      = $tarefa['nome'];
+            $data      = $tarefa['data'];
+            $descricao = $tarefa['descricao'];
+        
+        //cria um novo objeto Afazeres para cada tarefa retornada
+        $tarefa = new Afazeres ($id,$nome,$data,$descricao);
+        return $tarefa;
+}
+
+    public function showFinalizadas(){
+        $sql ="select * from finalizadas";
+
+        $resultado = $this->conexao->query($sql);
         $tarefas = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        //print_r($tarefas);die;
 
         foreach ($tarefas as $tarefa) {
             $id        = $tarefa['id'];
@@ -100,16 +120,12 @@ if (isset($listaAfazeres)) {
         //cria um novo objeto Afazeres para cada tarefa retornada
         $obj = new Afazeres ($id,$nome,$data,$descricao);
         $listaAfazeres[] = $obj;
-
     }
-}
+    if (isset($listaAfazeres)) {
 
-    public function showFinalizadas(){
-        $sql ="select * from finalizadas";
-
-        $this->conexao->exec($sql);
+        return $listaAfazeres;
     }
 
-}
+ }
 
- ?>
+}

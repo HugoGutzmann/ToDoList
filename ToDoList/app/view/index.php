@@ -2,32 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../../assets/css/css.css">
 	<title>ToDoList</title>
 </head>
-
-<style type="text/css">
-	/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-
-  border: none;
-  outline: none;
-  transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
-
-}
-
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-  padding: 0 18px;
-
-  display: none;
-  overflow: hidden;
-}
-	
-</style>
 <?php 
 
 $tarefas = array('a','b');
@@ -91,7 +68,7 @@ $tarefas = array('a','b');
 
 	 <ul>
 	 	<li><?= $tarefaHum->nome ?></li>
-	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHum->id?>">Excluir</a> <br>
+	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHum->id?>">Excluir</a> 
 	 	<a href="../controlers/controlerGeral.php?acao=finalizaTarefa&idtarefa=<?=$tarefaHum->id?>">Finalizar Tarefa</a>
 	 </ul>
 </div>
@@ -102,8 +79,17 @@ $tarefas = array('a','b');
  <?php endforeach; } ?>
 
 
- <?php if (isset($finalizadas)): ?>
- 	<p><?php print_r(finalizadas); ?></p>
+ <?php
+
+ $finalizadas = $crud->showFinalizadas(); 
+
+  if (isset($finalizadas)): ?>
+  	<h2>Tarefas Finalizadas: </h2>
+  	<h3><?=$finalizadas[0]->data?></h3>
+  	<ul>
+ 		<li><?= $finalizadas[0]->nome?></li>
+ 		<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$finalizadas[0]->id?>">Excluir</a>
+ 	</ul>
  <?php endif ?>
 
 <script >
