@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../../assets/css/css.css">
+	<!-- eu não soube como linkar o js, por isso ele ficou no final da pagina, mas o arquivo continua existindo -->
+	<link rel="stylesheet" href="../../assets/js/js.js">
 	<title>ToDoList</title>
 </head>
 <?php 
@@ -11,7 +13,26 @@ $tarefas = array('a','b');
 
  ?>
 <body>
-	<button class="accordion">Nova tarefa</button>
+
+<div class="barracima">
+<p>Aqui pode ter uma barra de pesquisa por exemplo :)</p>
+</div>
+
+<div class="container">
+
+<div class="navbar">
+
+	<ul>
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+	</ul>
+	
+</div>
+
+<section>
+	<a class="accordion" ><img src="../../assets/img/baseline-add-24px.svg"></img></a>
 	<form action="../controlers/controlerGeral.php?acao=newtarefa" method="post" class="panel">
 		<div >
 			<label>Digite aqui o nome da sua tarefa</label>
@@ -26,7 +47,9 @@ $tarefas = array('a','b');
 		<input type="submit">
 
 	</form>
+</section>
 
+<section>
 <!-- Mostra o dia atual -->
 <?php if(isset($tarefasHoje)){ ?>
  <h2>Hoje</h2>
@@ -36,11 +59,11 @@ $tarefas = array('a','b');
 <!-- Mostra apenas as tarefas do dia atual, caso houver, claro -->
  <?php foreach ($tarefasHoje as $tarefaHoje): ?>
 <div class="accordion">
-	 <ul>
-	 	<li><?= $tarefaHoje->nome ?></li>
+	
+	 	<p><?= $tarefaHoje->nome ?></p>
 	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHoje->id?>">Excluir</a>
 	 	<a href="../controlers/controlerGeral.php?acao=finalizaTarefa&idtarefa=<?=$tarefaHoje->id?>">Finalizar Tarefa</a>
-	 </ul>
+	 
 </div>
 <div class="panel">
 	<p><?=$tarefaHoje->descricao?></p>
@@ -66,11 +89,13 @@ $tarefas = array('a','b');
 		?></h2>
 
 
-	 <ul>
-	 	<li><?= $tarefaHum->nome ?></li>
+	
+	 	<p><?= $tarefaHum->nome ?></p>
+	 	<hr>
 	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHum->id?>">Excluir</a> 
 	 	<a href="../controlers/controlerGeral.php?acao=finalizaTarefa&idtarefa=<?=$tarefaHum->id?>">Finalizar Tarefa</a>
-	 </ul>
+
+	 
 </div>
 <div class="panel">
 	<p><?= $tarefaHum->descricao ?></p>
@@ -82,17 +107,36 @@ $tarefas = array('a','b');
  <?php
 
  $finalizadas = $crud->showFinalizadas(); 
+ //print_r($finalizadas[1]);die;
 
   if (isset($finalizadas)): ?>
   	<h2>Tarefas Finalizadas: </h2>
-  	<h3><?=$finalizadas[0]->data?></h3>
-  	<ul>
- 		<li><?= $finalizadas[0]->nome?></li>
- 		<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$finalizadas[0]->id?>">Excluir</a>
- 	</ul>
- <?php endif ?>
+  	<?php foreach ($finalizadas as $finalizada) { ?>
+  <div class="accordion">
+  	<h3><?= $finalizada->data?></h3>
+  
+ 		<p><?= $finalizada->nome?></p>
+ 		<a href="../controlers/controlerGeral.php?acao=excluiTarefaF&idtarefa=<?=$finalizada->id?>">Excluir</a>
 
-<script >
+  </div>		
+  <div class="panel">
+  	<p><?= $finalizada->descricao?></p>
+  </div>
+ 		<hr>
+ 	
+ <?php } endif ?>
+	
+	</div>
+</section>
+
+
+<footer>
+	<p>Desenvolvido por Hugo Gutzmann Puga</p>
+</footer>
+
+
+
+ <script >
 	//accordion (do w3schools para acelerar o processo)
 	var acc = document.getElementsByClassName("accordion");
 var i;
@@ -113,5 +157,5 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
-
+	</body>
 </html>

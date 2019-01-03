@@ -1,3 +1,4 @@
+/* Fonte w3schools (apenas o arccordion para acelerar o processo) "se tem openSource pra que refazer?" -Meu antigo professor de programação,2017 " */
 	/* Style the buttons that are used to open and close the accordion panel */
 .accordion {
 
@@ -18,4 +19,67 @@
   display: none;
   overflow: hidden;
 }
+
+
+/* Meu css mesmo */
 	
+	body{
+		background-color: #EBFF60; 
+		font-family: sans-serif;
+	}	
+	
+
+	.container{
+		/*background-color: black; */
+		position: relative;
+		margin-top: 60px;
+	}
+
+	.navbar{
+		position: absolute;
+		left :0px;
+		width: 20%;
+
+	}
+	section {
+  /* position is static by default */
+  margin-left: 20%;
+}
+
+.barracima{
+	position: fixed;
+ 	top: 0;
+  	left: 0;
+  	height: 50px;
+  	background-color: white;
+  	width: 100%;
+}
+
+footer{
+	text-align: center;
+	position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 70px;
+  background-color: white;
+  width: 100%;
+}
+
+a{
+	background-color: #4CE899; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;	
+  color: black;
+}
+
+hr{
+	margin-right: 20%;
+}
+.barracima{
+	text-align: center
+}

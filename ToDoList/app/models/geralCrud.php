@@ -128,4 +128,9 @@ if (isset($listaAfazeres)) {
 
  }
 
+ public function excluiTarefaF($id){
+    $sql = "delete from finalizadas where id = '{$id}' ";
+    $this->conexao->exec($sql);
+ }
+
 }

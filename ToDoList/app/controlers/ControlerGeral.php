@@ -54,7 +54,7 @@ switch ($acao) {
 	//chama a função excluiTarefa
 	$excluir = $crud->excluiTarefa($idTarefa);
 
-		header('Location : ControlerGeral.php');
+		header('Location : ControlerGeral.php?acao=index');
 
 		break;
 
@@ -75,6 +75,19 @@ switch ($acao) {
 		$excluiTarefa = $crud->excluiTarefa($idTarefa);
 
 		header('Location : ControlerGeral.php');
+
+		break;
+
+
+		case 'excluiTarefaF':
+
+		$id = $_GET['idtarefa'];
+
+		$crud = new geralCrud();
+
+		$excluiF = $crud->excluiTarefaF($id);
+
+		break;
 
 }
 
