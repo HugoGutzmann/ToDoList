@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../../assets/css/css.css">
+	<link rel="stylesheet" href="../../assets/css/cssoriginal.css">
 	<!-- eu não soube como linkar o js, por isso ele ficou no final da pagina, mas o arquivo continua existindo -->
 	<link rel="stylesheet" href="../../assets/js/js.js">
 	<title>ToDoList</title>
@@ -21,7 +21,7 @@ $tarefas = array('a','b');
 <div class="container">
 
 <div class="navbar">
-
+<!-- Aqui é uma barra lateral e poderia ter diferente ações como por exemplo itens que permitem a navegação na pagina-->
 	<ul>
 		<li>a</li>
 		<li>b</li>
@@ -30,46 +30,53 @@ $tarefas = array('a','b');
 	</ul>
 	
 </div>
+<div class="corpoabsoluto">
 
-<section>
+<section class="formulario">
 	<a class="accordion" ><img src="../../assets/img/baseline-add-24px.svg"></img></a>
 	<form action="../controlers/controlerGeral.php?acao=newtarefa" method="post" class="panel">
-		<div >
+		<div class="campo" >
 			<label>Digite aqui o nome da sua tarefa</label>
-			<input type="text" name="nome" require placeholder="Exemplo: 'Caminhar 4 km'">	
+			<input type="text" name="nome" id="nome" require placeholder="Exemplo: 'Caminhar 4 km'">	
 		</div>
 
-		<div>
+		<div class="campo">
 			<label>Detalhe-a</label>
-			<input type="text" name="descricao" require placeholder="Exemplo: 'Sair de casa as 20:00hrs' ">
+			<input type="text" name="descricao" id="detalhe" require placeholder="Exemplo: 'Sair de casa as 20:00hrs' ">
 		</div>
 
-		<input type="submit">
+		<input id="submit" type="submit" value="Guarda">
 
 	</form>
 </section>
-
 <section>
 <!-- Mostra o dia atual -->
 <?php if(isset($tarefasHoje)){ ?>
  <h2>Hoje</h2>
- <!--Seguido do dia referente à semana -->
- <h3>Quarta-feira</h3>
+
 
 <!-- Mostra apenas as tarefas do dia atual, caso houver, claro -->
  <?php foreach ($tarefasHoje as $tarefaHoje): ?>
-<div class="accordion">
-	
-	 	<p><?= $tarefaHoje->nome ?></p>
-	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHoje->id?>">Excluir</a>
+	<!--$data2 = date("d/m/Y", $data);
+	Não consegui manipular para o padrão sul americano dia/mês/ano :( -->
+
+	<!--E o dia que ela foi cadastrada -->
+ 		<h3 class="data"><?= $tarefaHoje->data?></h3>
+		<!--mostra o nome da tarefa -->
+	 	<h3><?= $tarefaHoje->nome ?></h3>
+	 	
+	 	
 	 	<a href="../controlers/controlerGeral.php?acao=finalizaTarefa&idtarefa=<?=$tarefaHoje->id?>">Finalizar Tarefa</a>
-	 
-</div>
+	 	<div class="accordion">show more</div>
+
 <div class="panel">
+	<h3 class="data">Detalhes:</h3>
 	<p><?=$tarefaHoje->descricao?></p>
+	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHoje->id?>">Excluir</a>
 </div>
- 
+ <hr>
  <?php endforeach; } ?>
+</section>
 
 	<!-- Caso existir, mostra as tarefas de outros dias -->
  
@@ -78,31 +85,28 @@ $tarefas = array('a','b');
  if (isset($tarefasHum)) {
  
  foreach ($tarefasHum as $tarefaHum) : ?>
- <div class="accordion">
-	<h2><?php 
-
-	$data = $tarefaHum->data;
-	//$data2 = date("d/m/Y", $data);
-	//Não consegui manipular para o padrão sul americano dia/mês/ano :( 
+ 	<section>
+	<h3 class="data"><?php 	$data = $tarefaHum->data;
+	
 	echo $data;
 
-		?></h2>
-
-
+		?></h3>
 	
-	 	<p><?= $tarefaHum->nome ?></p>
-	 	<hr>
-	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHum->id?>">Excluir</a> 
+	 	<h3><?= $tarefaHum->nome ?></h3>
+	 	
 	 	<a href="../controlers/controlerGeral.php?acao=finalizaTarefa&idtarefa=<?=$tarefaHum->id?>">Finalizar Tarefa</a>
+		<div class="accordion">Show more</div>
+
 
 	 
-</div>
 <div class="panel">
+	<h3 class="data">Detalhes:</h3>
 	<p><?= $tarefaHum->descricao ?></p>
+	 	<a href="../controlers/controlerGeral.php?acao=excluiTarefa&idtarefa=<?=$tarefaHum->id?>">Excluir</a> 
 </div>
-
+<hr>
  <?php endforeach; } ?>
-
+</section>
 
  <?php
 
@@ -110,24 +114,26 @@ $tarefas = array('a','b');
  //print_r($finalizadas[1]);die;
 
   if (isset($finalizadas)): ?>
+  	<section>
   	<h2>Tarefas Finalizadas: </h2>
   	<?php foreach ($finalizadas as $finalizada) { ?>
-  <div class="accordion">
-  	<h3><?= $finalizada->data?></h3>
-  
- 		<p><?= $finalizada->nome?></p>
- 		<a href="../controlers/controlerGeral.php?acao=excluiTarefaF&idtarefa=<?=$finalizada->id?>">Excluir</a>
 
-  </div>		
+  	<h3 class="data"><?= $finalizada->data?></h3>
+  
+ 		<h3><?= $finalizada->nome?></h3>
+  		<div class="accordion">show more</div>		
+
   <div class="panel">
-  	<p><?= $finalizada->descricao?></p>
+  	<h3 class="data">Detalhes:</h3>
+  <h3><?= $finalizada->descricao?></h3>
+ 		<a href="../controlers/controlerGeral.php?acao=excluiTarefaF&idtarefa=<?=$finalizada->id?>">Excluir</a>
   </div>
  		<hr>
  	
  <?php } endif ?>
 	
-	</div>
 </section>
+	</div>
 
 
 <footer>

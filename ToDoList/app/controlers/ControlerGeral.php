@@ -39,6 +39,7 @@ switch ($acao) {
 		);
 
 	$crud = new geralCrud();
+
 	//chama a função addTarefa
 	$tarefa = $crud->addTarefa($obj);	
 		
@@ -54,7 +55,7 @@ switch ($acao) {
 	//chama a função excluiTarefa
 	$excluir = $crud->excluiTarefa($idTarefa);
 
-		header('Location : ControlerGeral.php?acao=index');
+		header('Location: ControlerGeral.php?acao=index');
 
 		break;
 
@@ -74,7 +75,7 @@ switch ($acao) {
 		//exclui a tarefa já finalizada da tabela "Afazeres"
 		$excluiTarefa = $crud->excluiTarefa($idTarefa);
 
-		header('Location : ControlerGeral.php');
+		header('Location: ControlerGeral.php');
 
 		break;
 
@@ -86,6 +87,9 @@ switch ($acao) {
 		$crud = new geralCrud();
 
 		$excluiF = $crud->excluiTarefaF($id);
+
+		header('Location: ControlerGeral.php');
+
 
 		break;
 

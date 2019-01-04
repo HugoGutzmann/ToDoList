@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Jan-2019 às 21:43
+-- Generation Time: 04-Jan-2019 às 19:29
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.0
 
@@ -40,7 +40,9 @@ CREATE TABLE `afazeres` (
 --
 
 INSERT INTO `afazeres` (`id`, `nome`, `data`, `descricao`) VALUES
-(7, 'hugo', '2019-01-03', 'aaaa');
+(6, 'Ver video aula de Biologia', '2019-01-04', 'www.youtube.com/biologia'),
+(9, 'Ir ao dentista', '2019-01-03', 'Rua Joao não sei das quantas, 1155'),
+(11, 'aaaaa', '2019-01-01', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -60,7 +62,7 @@ CREATE TABLE `finalizadas` (
 --
 
 INSERT INTO `finalizadas` (`id`, `nome`, `data`, `descricao`) VALUES
-(5, 'terminar hjoje', '2019-01-03', 'asdasd');
+(12, 'Terminar o projeto', '2019-01-04', 'Fazer um css Ã  mÃ£o');
 
 --
 -- Indexes for dumped tables
@@ -86,13 +88,13 @@ ALTER TABLE `finalizadas`
 -- AUTO_INCREMENT for table `afazeres`
 --
 ALTER TABLE `afazeres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `finalizadas`
 --
 ALTER TABLE `finalizadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
