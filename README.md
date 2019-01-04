@@ -9,7 +9,9 @@ Bom, agora deixando a formalidade de lado gostaria de fazer alguns comentarios.
  
  Meu projeto de conclusão de curso está disponivel aqui no github e seria de grande valia que o senhor desse uma olhada rápida na complexidade das funções e consultas sql. Essas duas coisas são minha especialidade como programador "junior" e foi o que tentei demonstar no projeto solicidado pelo senhor.
  
- O frontend (se é que da pra chamar de frontend) foi bem simples mesmo, eu tenho uma certa facilidade em lidar com frameworks como o semantic UI e o booststrap (creio que sejam os mais famosos) porém eu realmente não entendo muito de css e não tentei deixar o projeto "bonito", mas sim trabalhar o layout de todas as formas que tenho conhecimento (ou pelo menos tentar :p)
+ O frontend (se é que da pra chamar de frontend) do prjeto solicitado foi bem simples mesmo, eu tenho uma certa facilidade em lidar com frameworks como o semantic UI e o booststrap (creio que sejam os mais famosos) porém eu realmente não entendo muito de css e não tentei deixar o projeto "bonito", mas sim trabalhar o layout de todas as formas que tenho conhecimento (ou pelo menos tentar :p, por favor veja o arquivo css)
+ 
+ O código está comentado da melhor maneira que consegui, contando com observações e diferentes possibilidades de fazer a função.
  
  Bom, é isto. Peço desculpas caso usei algum conceito erroneamente aqui nessa descrição mas espero de ter deixado tudo bem claro
  
