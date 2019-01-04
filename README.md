@@ -2,6 +2,8 @@ Aqui está o projeto solicitado, feito no padrão MVC, e desenvolvido em POO.
 
 O projeto é bem simples, porém conta com o excencial para uma aplicação do gênero; Cadastro de atividades, descrição das mesmas, possibilidade de excluílas e marcarca-las como "finalizadas", sendo que a lista de atividades é ordenada pelas atividades mais recentes e destaca as atividades adicionadas no dia atual.
 
+-----------------------------------------//-------------------------------
+
 Nota Pessoal:
 Bom, agora deixando a formalidade de lado gostaria de fazer alguns comentarios.
  
